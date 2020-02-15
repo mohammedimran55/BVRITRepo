@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.cg.pms.bean.Product;
 import com.cg.pms.exception.ProductException;
+import com.cg.pms.service.ProductService;
 import com.cg.pms.service.ProductServiceImpl;
 
 
@@ -13,7 +14,7 @@ public class Client {
 	public static void main(String[] args)  {
 
        Scanner scanner = new Scanner(System.in);
-       ProducteService productservice = new ProductServiceImpl();
+       ProductService productservice = new ProductServiceImpl();
        
        int choice = 0;
        Product product = null;
@@ -41,7 +42,7 @@ public class Client {
     	   try
     	   {
     	   
-		int id = productservice.addEmployee(product);
+		int id = productservice.addProduct(product);
     	   System.out.println("Employee Id = "+id);
     	   }
     	   catch(ProductException e)
@@ -55,7 +56,7 @@ public class Client {
     		   int id = scanner.nextInt();
     		   try
     		   {
-    			   product = ProductService.findProductById(id);
+    			   product = productservice.findProductById(id);
     		   System.out.println(" Name = " +product.getProductName());
     		   System.out.println(" Price =" +product.getPrice());
     		   }catch(ProductException e)
